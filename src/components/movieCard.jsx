@@ -1,9 +1,11 @@
-const MovieCard = ({ movie, onMovieSelect }) => {
+import { Link } from 'react-router-dom';
+
+const MovieCard = ({ movie }) => {
     const poster = movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/400x600?text=No+Poster";
     return (
-        <div
-            onClick={() => onMovieSelect(movie.imdbID)}
-            className="group relative cursor-pointer rounded-sm overflow-hidden bg-[#1a1a1a] transition-all duration-300"
+        <Link
+            to={`/movie/${movie.imdbID}`}
+            className="group block relative cursor-pointer rounded-sm overflow-hidden bg-[#1a1a1a] transition-all duration-300"
         >
             <div className="aspect-[2/3] overflow-hidden">
                 <img
@@ -31,7 +33,7 @@ const MovieCard = ({ movie, onMovieSelect }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import { useMovieDetail } from '../hooks/useMovieDetail';
 
-const MovieDetail = ({ imdbID, onBack }) => {
+const MovieDetail = () => {
+    const { id: imdbID } = useParams();
     const { movie, loading } = useMovieDetail(imdbID);
     if (loading) return (
         <div className="flex justify-center items-center py-40">
@@ -85,10 +86,6 @@ const DetailItem = ({ label, value }) => {
             </span>
         </div>
     );
-};
-MovieDetail.propTypes = {
-    imdbID: PropTypes.string.isRequired,
-    onBack: PropTypes.func.isRequired
 };
 
 export default MovieDetail;
